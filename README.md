@@ -6,19 +6,19 @@ Install the dependecies
 
 $ yarn
 
-run application
+run the application
 
 $ yarn start
 
 Techs:
 
-ReactJS
-TypeScript
-React Router DOM
-UnForm
-Styled Components
-Polished
-Axios
-EsLint
-Prettier
-EditorConfig
+ReactJS;
+TypeScript;
+React Router DOM;
+UnForm;
+Styled Components;
+Polished;
+Axios;
+EsLint;
+Prettier;
+EditorConfig;
