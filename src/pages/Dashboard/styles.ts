@@ -22,11 +22,12 @@ export const Form = styled.form<FormProps>`
 
   input {
     flex: 1;
-    height: 50px;
+    height: 46px;
     padding: 0 24px;
-    border: 0;
-    border-radius: 5px 0 0 5px;
+    border: 0px;
     color: #3a3a3a;
+    border-radius: 5px 0 0 5px;
+
     border: 2px solid #fff;
     border-right: 0;
 
@@ -66,8 +67,11 @@ export const Error = styled.span`
 export const Repositorys = styled.div`
   margin-top: 50px;
   max-width: 700px;
+  display: flex;
+  flex-direction: column;
 
-  a {
+  div {
+    flex: 1;
     background: #fff;
     border-radius: 5px;
     width: 100%;
@@ -83,7 +87,7 @@ export const Repositorys = styled.div`
       transform: translateX(10px);
     }
 
-    & + a {
+    & + div {
       margin-top: 16px;
     }
 
@@ -95,6 +99,9 @@ export const Repositorys = styled.div`
 
     div {
       margin-left: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
 
       strong {
         font-size: 20px;
@@ -105,12 +112,18 @@ export const Repositorys = styled.div`
         font-size: 18px;
         color: #a8a8b3;
         margin-top: 4px;
+        margin-right: 4px;
       }
     }
 
-    svg {
+    button {
+      width: 30px;
+      height: 30px;
       margin-left: auto;
-      color: #cbcbd6;
+      background-color: #c53030;
+      border-radius: 50%;
+      border-color: #c53030;
+      align-items: flex-end;
     }
   }
 `;

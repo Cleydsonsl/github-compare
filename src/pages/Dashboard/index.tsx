@@ -1,5 +1,5 @@
-import React, { useState, FormEvent, useEffect } from 'react';
-import { FiChevronRight } from 'react-icons/fi';
+import React, { useState, FormEvent, useEffect, useCallback } from 'react';
+import { FiTrash } from 'react-icons/fi';
 import api from '../../services/api';
 
 import logoImg from '../../assets/logogithub.svg';
@@ -8,6 +8,7 @@ import { Title, Form, Repositorys, Error } from './styles';
 import Repository from '../Repository';
 
 interface Repository {
+  id: number;
   full_name: string;
   description: string;
   owner: {
@@ -53,13 +54,20 @@ const Dashboard: React.FC = () => {
 
       const repository = response.data;
 
-      setRepositories([...repositories, repository]);
+      setRepositories([repository, ...repositories]);
       setNewRepo('');
       setIntputError('');
     } catch (err) {
       setIntputError('Repository does not exist');
     }
   }
+
+  const handleDeleteRepository = useCallback(repository_name => {
+    const filteredRepositories = repositories.filter(
+      repository => repository.id !== repository_name,
+    );
+    setRepositories(filteredRepositories);
+  }, []);
 
   return (
     <>
@@ -80,7 +88,7 @@ const Dashboard: React.FC = () => {
 
       <Repositorys>
         {repositories.map(repository => (
-          <a key={repository.full_name} href="teste">
+          <div key={repository.full_name}>
             <img
               src={repository.owner.avatar_url}
               alt={repository.owner.login}
@@ -91,8 +99,15 @@ const Dashboard: React.FC = () => {
               <p>{repository.language}</p>
             </div>
 
-            <FiChevronRight size={20} />
-          </a>
+            <button
+              type="submit"
+              onClick={function () {
+                return handleDeleteRepository(repository.id);
+              }}
+            >
+              <FiTrash size={20} />
+            </button>
+          </div>
         ))}
       </Repositorys>
     </>
